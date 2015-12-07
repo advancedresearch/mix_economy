@@ -1,0 +1,10 @@
+[package]
+name = "piston_mix_economy"
+version = "0.1.0"
+authors = ["bvssvni <bvssvni@gmail.com>"]
+description = "A research project to mix-regulate economy in MMO worlds"
+
+[dev-dependencies]
+piston_window = "0.32.0"
+rand = "0.3.11"
+piston-timer_controller = "0.1.0"
