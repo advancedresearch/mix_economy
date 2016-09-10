@@ -20,7 +20,7 @@ an existing economy model:
 4. Rewards weighted as negative tax on fortune (more money = more rewards).
 
 At start of joining the game, each player gets a start fortune.
-Each player receive money rewards through regular time intervals.
+Each player receives money rewards at regular time intervals.
 
 The rewards increases with the amount of money, meaning that saving or
 earning money is beneficial to the player.
