@@ -13,13 +13,13 @@
 //! This research project studies a simple model that can be mixed with
 //! an existing economy model:
 //!
-//! 1. A normalized thresold sets a soft limit of the wealth of a player.
+//! 1. A normalized threshold sets a soft limit of the wealth of a player.
 //! 2. Money "burns in the pockets" of rich players, encouraging spending.
 //! 3. Controlled inflation charged by "total lack of money".
 //! 4. Rewards weighted as negative tax on fortune (more money = more rewards).
 //!
 //! At start of joining the game, each player gets a start fortune.
-//! Each player receive money rewards through regular time interval.
+//! Each player receives money rewards at regular time interval.
 //!
 //! The rewards increases with the amount of money, meaning that saving or
 //! earning money is beneficial to the player.
@@ -50,12 +50,22 @@
 //! This will lead the players to find creative ways to make money.
 
 /// Represents the whole economy.
+///
+/// Each player has a normalized fortune against an upper soft limit.
+/// The difference from the upper limit is charging the economy.
+///
+/// The tax tells how fast to burn money of fortunes above the soft limit,
+/// and how much to give each player below the soft limit per time interval.
+///
+/// The start fortune is given to new players.
+///
+/// Call `Economy::update` at regular time intervals to distribute wealth.
 pub struct Economy {
     /// The fortunes of the players.
     pub players: Vec<f64>,
     /// The progressive tax factor, as the square root of fortune above 1.
     pub tax: f64,
-    /// The initial fortune.
+    /// The initial fortune. Should be in the range [0, 1].
     pub start_fortune: f64,
 }
 
@@ -105,7 +115,7 @@ impl Economy {
         for p in &mut self.players {
             if *p >= 1.0 {
                 let amount = (*p - 1.0).sqrt() * self.tax;
-                *p = *p - amount;
+                *p -= amount;
             }
         }
 
@@ -114,11 +124,11 @@ impl Economy {
         let mut distribute = 0.0;
         for p in &self.players {
             if *p < 1.0 {
-                distribute = distribute + 1.0 - *p;
+                distribute += 1.0 - *p;
                 if *p < self.start_fortune {
-                    sum_weights = sum_weights + self.start_fortune.sqrt();
+                    sum_weights += self.start_fortune.sqrt();
                 } else {
-                    sum_weights = sum_weights + p.sqrt();
+                    sum_weights += p.sqrt();
                 }
             }
         }
@@ -127,10 +137,10 @@ impl Economy {
         for p in &mut self.players {
             if *p < 1.0 {
                 if *p < self.start_fortune {
-                    *p = *p + self.start_fortune.sqrt() / sum_weights *
+                    *p += self.start_fortune.sqrt() / sum_weights *
                         distribute * self.tax;
                 } else {
-                    *p = *p + p.sqrt() / sum_weights * distribute * self.tax;
+                    *p += p.sqrt() / sum_weights * distribute * self.tax;
                 }
             }
         }
