@@ -11,7 +11,7 @@ use piston_mix_economy::Economy;
 use timer_controller::Timer;
 
 fn main() {
-    let window: PistonWindow =
+    let mut window: PistonWindow =
         WindowSettings::new("Random transactions", [1024, 768])
         .exit_on_esc(true)
         .build()
@@ -31,8 +31,8 @@ fn main() {
 
     let mut rng = rand::thread_rng();
 
-    for e in window {
-        e.draw_2d(|c, g| {
+    while let Some(e) = window.next() {
+        window.draw_2d(&e, |c, g| {
             clear([1.0, 1.0, 1.0, 1.0], g);
             draw_economy(&economy, &c, g);
             let d = c.trans(0.0, 200.0);
