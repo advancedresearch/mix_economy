@@ -96,6 +96,22 @@ impl Economy {
         (min.unwrap_or(0.0), max.unwrap_or(0.0))
     }
 
+    /// Find the Gini coefficient (see https://en.wikipedia.org/wiki/Gini_coefficient).
+    pub fn gini(&self) -> f64 {
+        let mut sum = 0.0;
+        let n = self.players.len();
+        for i in 0..n {
+            for j in 0..n {
+                sum += (self.players[i] - self.players[j]).abs();
+            }
+        }
+        let mut div = 0.0;
+        for j in 0..n {
+            div += self.players[j] * n as f64;
+        }
+        sum / (2.0 * div)
+    }
+
     /// Does a transaction between two people.
     pub fn transaction(&mut self, from: usize, to: usize, amount: f64)
     -> Result<(), ()> {
