@@ -56,3 +56,23 @@ the overall cost of a resource.
 
 Items could be "programmed" to allow greater flexibility.
 This will lead the players to find creative ways to make money.
+
+## Goals
+
+- Develop an economic model that makes gameplay fun for both experienced
+  and casual players
+- Make it work for "complex" environments
+- Research algorithmic properties and interaction with gameplay
+
+## License
+
+Licensed under either of
+ * Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
+ * MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+at your option.
+
+### Contribution
+
+Unless you explicitly state otherwise, any contribution intentionally submitted
+for inclusion in the work by you shall be dual licensed as above, without any
+additional terms or conditions.
