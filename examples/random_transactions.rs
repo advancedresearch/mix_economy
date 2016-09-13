@@ -25,6 +25,10 @@ fn main() {
     let mut economy2 = Economy::new(tax * diff, start_fortune, players);
     let update_interval = 0.1;
     let mut timer = Timer::new(update_interval);
+    let mut gini_timer = Timer::new(1.0);
+    let mut smooth_gini = 0.0;
+    let mut smooth_gini2 = 0.0;
+    let mut smooth = 1.0;
 
     let avg_transaction = tax;
     let transactions = 1000;
@@ -53,6 +57,12 @@ fn main() {
             economy2.update();
             economy2.players.sort_by(|a, b| a.partial_cmp(b).unwrap());
         });
+        gini_timer.event(&e, || {
+            smooth_gini += (economy.gini() - smooth_gini) * smooth;
+            smooth_gini2 += (economy2.gini() - smooth_gini2) * smooth;
+            println!("gini top: {} bottom: {} smooth: {}", smooth_gini, smooth_gini2, smooth);
+            smooth *= 0.99;
+        })
     }
 }
 
