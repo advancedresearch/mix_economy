@@ -115,9 +115,10 @@ impl Economy {
     /// Does a transaction between two people.
     pub fn transaction(&mut self, from: usize, to: usize, amount: f64)
     -> Result<(), ()> {
+        if from == to { return Err(()); }
         let new_fortune = self.players[from] - amount;
         if new_fortune > 0.0 {
-            self.players[to] = self.players[to] + amount;
+            self.players[to] += amount;
             self.players[from] = new_fortune;
             Ok(())
         } else {
