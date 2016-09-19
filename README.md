@@ -22,7 +22,7 @@ an existing economy model:
 At start of joining the game, each player gets a start fortune.
 Each player receives money rewards at regular time intervals.
 
-The rewards increases with the amount of money, meaning that saving or
+The rewards increase with the amount of money, meaning that saving or
 earning money is beneficial to the player.
 
 Rewards are charged through the lack of money in circulation,
@@ -34,7 +34,7 @@ This means inviting new players to join is beneficial for all players.
 A game has an infinite resource reserve that requires a minimum amount
 of time to mine. By buying an expensive equipment, the resource can be
 mined faster. A player owning the expensive equipment can sell the resource
-other players, for a cheaper price than these players
+to other players, for a cheaper price than these players
 earn during the same amount of time required to mine the resource.
 This means a huge cash flow from
 many players to some few players, which they then invest in other equipment
