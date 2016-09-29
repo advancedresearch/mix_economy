@@ -59,7 +59,13 @@
 ///
 /// The start fortune is given to new players.
 ///
-/// Call `Economy::update` at regular time intervals to distribute wealth.
+/// Call `Economy::update` at regular time intervals to distribute wealth,
+/// using a fixed tax rate. The Gini index can vary depending on economic activity.
+///
+/// Call `Economy::solve` at regular time intervals to distribute wealth,
+/// using a target Gini coefficient.
+/// The tax is automatically adjusted to meet the target.
+#[derive(Clone)]
 pub struct Economy {
     /// The fortunes of the players.
     pub players: Vec<f64>,
@@ -126,7 +132,8 @@ impl Economy {
         }
     }
 
-    /// Updates the economy.
+    /// Updates the economy using the fixed tax rate.
+    /// The Gini index can vary depending on economic activity.
     pub fn update(&mut self) {
         // Remove wealth from rich players.
         for p in &mut self.players {
@@ -161,5 +168,43 @@ impl Economy {
                 }
             }
         }
+    }
+
+    /// Updates the economy using a target Gini coefficient.
+    /// The tax is automatically adjusted to meet the target.
+    /// Uses convergent binary search to find the tax.
+    ///
+    /// The solver is less accurate for high Gini (`~0.5` or higher) in some cases.
+    /// A very low Gini (`<0.1`) might not work at all, because the algorithm
+    /// is incentivizing (players that have more gets more below the upper soft limit).
+    ///
+    /// The `smooth_target` parameter is a value in range `[0.5, 1)`.
+    /// `0.5` gives binary search behavior, which assumes strict
+    /// monotonic Gini (tax should be lowered if target Gini is above).
+    /// Higher values weakens the assumption, interpreted as
+    /// the mix-algorithm "tends to have" monotonic Gini.
+    pub fn solve(&mut self, target_gini: f64, smooth_target: f64) {
+        let mut tax = 0.0;
+        let mut step = 0.5;
+        loop {
+            if tax > 1.0 { break; }
+            let mut copy = self.clone();
+            copy.tax = tax;
+            copy.update();
+            let gini = copy.gini();
+            let diff = target_gini - gini;
+            if diff > 0.0 {
+                tax -= step;
+            } else {
+                tax += step;
+            }
+            step *= smooth_target;
+            if step < 0.0001 { break; }
+        }
+
+        if tax < 0.0 { tax = 0.0; }
+        if tax > 1.0 { tax = 1.0; }
+        self.tax = tax;
+        self.update();
     }
 }
