@@ -1,0 +1,138 @@
+// sh - Solved gini at 0.5 target.
+// cliff - Target Gini when solver starts converging.
+//
+// Other setttings:
+// smooth_target: 0.9,
+// players: 100,
+// avg_trans: 0.03,
+// trans: 1000,
+// periods: 10,
+// smooth_fact: 0.99,
+[
+    {
+        name: "Mix Gini 0.05",
+        start_fortune: 0.05,
+        sh: 0.3985738387,
+        cliff: 0.19,
+    },
+    {
+        name: "Mix Gini 0.06",
+        start_fortune: 0.06,
+        sh: 0.5916216905,
+        cliff: 0.3,
+    },
+    {
+        name: "Mix Gini 0.07",
+        start_fortune: 0.07,
+        sh: 0.5121369308,
+        cliff: 0.3,
+    },
+    {
+        name: "Mix Gini 0.08",
+        start_fortune: 0.08,
+        sh: 0.4448980719,
+        cliff: 0.285,
+    },
+    {
+        name: "Mix Gini 0.09",
+        start_fortune: 0.09,
+        sh: 0.5642461094,
+        cliff: 0.365,
+    },
+    {
+        name: "Mix Gini 0.1",
+        start_fortune: 0.1,
+        sh: 0.5072204527,
+        cliff: 0.345,
+    },
+    {
+        name: "Mix Gini 0.11",
+        start_fortune: 0.11,
+        sh: 0.4672808275,
+        cliff: 0.33,
+    },
+    {
+        name: "Mix Gini 0.12",
+        start_fortune: 0.12,
+        sh: 0.554800171,
+        cliff: 0.4,
+    },
+    {
+        name: "Mix Gini 0.13",
+        start_fortune: 0.13,
+        sh: 0.5104736976,
+        cliff: 0.415,
+    },
+    {
+        name: "Mix Gini 0.14",
+        start_fortune: 0.14,
+        sh: 0.4717977079,
+        cliff: 0.405,
+    },
+    {
+        name: "Mix Gini 0.15",
+        start_fortune: 0.15,
+        sh: 0.540747434,
+        cliff: 0.46,
+    },
+    {
+        name: "Mix Gini 0.16",
+        start_fortune: 0.16,
+        sh: 0.5072868084,
+        cliff: 0.44,
+    },
+    {
+        name: "Mix Gini 0.17",
+        start_fortune: 0.17,
+        sh: 0.4790931047,
+        cliff: 0.42,
+    },
+    {
+        name: "Mix Gini 0.18",
+        start_fortune: 0.18,
+        sh: 0.5338327156,
+        cliff: 0.475,
+    },
+    {
+        name: "Mix Gini 0.19",
+        start_fortune: 0.19,
+        sh: 0.5076380273,
+        cliff: 0.455,
+    },
+    {
+        name: "Mix Gini 0.2",
+        start_fortune: 0.2,
+        sh: 0.4805756008,
+        cliff: 0.5,
+    },
+    {
+        name: "Mix Gini 0.21",
+        start_fortune: 0.21,
+        sh: 0.477861477,
+        cliff: 0.5,
+    },
+    {
+        name: "Mix Gini 0.22",
+        start_fortune: 0.22,
+        sh: 0.4794420244,
+        cliff: 0.5,
+    },
+    {
+        name: "Mix Gini 0.23",
+        start_fortune: 0.23,
+        sh: 0.4785835284,
+        cliff: 0.5,
+    },
+    {
+        name: "Mix Gini 0.24",
+        start_fortune: 0.24,
+        sh: 0.4732949153,
+        cliff: 0.5,
+    },
+    {
+        name: "Mix Gini 0.25",
+        start_fortune: 0.25,
+        sh: 0.469450604,
+        cliff: 0.5,
+    },
+]
