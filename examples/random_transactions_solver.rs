@@ -33,13 +33,15 @@ fn main() {
 }
 
 fn tmp_settings(id: u32, target_gini: f64) -> Settings {
+    let start_fortune = 0.05;
+    println!("Start fortune: {}", start_fortune);
     Settings {
         id: id,
         tax_1: 0.0,
         tax_2: 0.0,
         target_gini: target_gini,
         smooth_target: 0.9,
-        start_fortune: 0.2,
+        start_fortune: start_fortune,
         players: 100,
         avg_trans: 0.03,
         trans: 1000,
