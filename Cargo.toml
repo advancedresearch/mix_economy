@@ -1,6 +1,6 @@
 [package]
 name = "piston_mix_economy"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["bvssvni <bvssvni@gmail.com>"]
 description = "A research project to mix-regulate economy in MMO worlds"
 license = "MIT OR Apache-2.0"

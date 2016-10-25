@@ -14,6 +14,8 @@ pub struct Settings {
     id: u32,
     tax_1: f64,
     tax_2: f64,
+    min_tax_1: f64,
+    min_tax_2: f64,
     target_gini: f64,
     smooth_target: f64,
     start_fortune: f64,
@@ -33,12 +35,14 @@ fn main() {
 }
 
 fn tmp_settings(id: u32, target_gini: f64) -> Settings {
-    let start_fortune = 0.05;
+    let start_fortune = 0.25;
     println!("Start fortune: {}", start_fortune);
     Settings {
         id: id,
         tax_1: 0.0,
         tax_2: 0.0,
+        min_tax_1: 0.001,
+        min_tax_2: 0.0,
         target_gini: target_gini,
         smooth_target: 0.9,
         start_fortune: start_fortune,
@@ -97,7 +101,11 @@ fn simulate(settings: Settings) {
                     let _ = economy2.transaction(from, to, avg_transaction);
                 }
 
-                economy.solve(settings.target_gini, settings.smooth_target);
+                economy.solve(
+                    settings.target_gini,
+                    settings.smooth_target,
+                    settings.min_tax_1
+                );
                 economy.players.sort_by(|a, b| a.partial_cmp(b).unwrap());
                 economy2.update();
                 economy2.players.sort_by(|a, b| a.partial_cmp(b).unwrap());
@@ -123,7 +131,11 @@ fn simulate(settings: Settings) {
                     let _ = economy2.transaction(from, to, avg_transaction);
                 }
 
-                economy.solve(settings.target_gini, settings.smooth_target);
+                economy.solve(
+                    settings.target_gini,
+                    settings.smooth_target,
+                    settings.min_tax_1
+                );
                 // economy.players.sort_by(|a, b| a.partial_cmp(b).unwrap());
                 economy2.update();
                 // economy2.players.sort_by(|a, b| a.partial_cmp(b).unwrap());
