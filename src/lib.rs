@@ -183,7 +183,15 @@ impl Economy {
     /// monotonic Gini (tax should be lowered if target Gini is above).
     /// Higher values weakens the assumption, interpreted as
     /// the mix-algorithm "tends to have" monotonic Gini.
-    pub fn solve(&mut self, target_gini: f64, smooth_target: f64) {
+    ///
+    /// The `min_tax` parameter is a value usually above 0,
+    /// to prevent the solver from getting stuck in 0% scenarios.
+    pub fn solve(
+        &mut self,
+        target_gini: f64,
+        smooth_target: f64,
+        min_tax: f64,
+    ) {
         let mut tax = 0.0;
         let mut step = 0.5;
         loop {
@@ -202,7 +210,7 @@ impl Economy {
             if step < 0.0001 { break; }
         }
 
-        if tax < 0.0 { tax = 0.0; }
+        if tax < min_tax { tax = min_tax; }
         if tax > 1.0 { tax = 1.0; }
         self.tax = tax;
         self.update();
