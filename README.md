@@ -1,6 +1,11 @@
 # mix_economy
 A research project to mix-regulate economy in MMO worlds
 
+### Blog posts
+
+- [2017-10-11 Is it time to think differently about money?](https://github.com/advancedresearch/advancedresearch.github.io/blob/master/blog/2017-10-10-is-it-time-to-think-differently-about-money.md)
+- [2016-10-25 Solving Economic Inequality in MMOs](http://blog.piston.rs/2016/10/25/solving-economic-inequality-in-mmos/)
+
 [Why mix_economy?](https://github.com/PistonDevelopers/mix_economy/issues/1)
 
 A [virtual economy](https://en.wikipedia.org/wiki/Virtual_economy)
