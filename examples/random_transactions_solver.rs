@@ -74,7 +74,7 @@ fn simulate(settings: Settings) {
     let mut smooth_tax = 0.0;
     let mut smooth = 1.0;
 
-    let mut rng = rand::os::OsRng::new().unwrap();
+    let mut rng = rand::rngs::OsRng;
 
     let window = false;
     if window {
@@ -85,7 +85,7 @@ fn simulate(settings: Settings) {
             .unwrap();
         window.set_bench_mode(true);
         while let Some(e) = window.next() {
-            window.draw_2d(&e, |c, g| {
+            window.draw_2d(&e, |c, g, _| {
                 clear([1.0, 1.0, 1.0, 1.0], g);
                 draw_economy(&economy, &c, g, players);
                 let d = c.trans(0.0, 500.0);
@@ -95,8 +95,8 @@ fn simulate(settings: Settings) {
                 // Make random transactions.
                 for _ in 0..transactions {
                     let len = economy.players.len();
-                    let from = rng.gen_range(0, len);
-                    let to = rng.gen_range(0, len);
+                    let from = rng.gen_range(0..len);
+                    let to = rng.gen_range(0..len);
                     let _ = economy.transaction(from, to, avg_transaction);
                     let _ = economy2.transaction(from, to, avg_transaction);
                 }
@@ -125,8 +125,8 @@ fn simulate(settings: Settings) {
                 // Make random transactions.
                 for _ in 0..transactions {
                     let len = economy.players.len();
-                    let from = rng.gen_range(0, len);
-                    let to = rng.gen_range(0, len);
+                    let from = rng.gen_range(0..len);
+                    let to = rng.gen_range(0..len);
                     let _ = economy.transaction(from, to, avg_transaction);
                     let _ = economy2.transaction(from, to, avg_transaction);
                 }

@@ -6,6 +6,6 @@ description = "A research project to mix-regulate economy in MMO worlds"
 license = "MIT OR Apache-2.0"
 
 [dev-dependencies]
-piston_window = "0.53.0"
-rand = "0.3.14"
-piston-timer_controller = "0.6.0"
+piston_window = "0.120.0"
+rand = "0.8.3"
+piston-timer_controller = "0.21.0"
