@@ -1,6 +1,12 @@
 # mix_economy
 A research project to mix-regulate economy in MMO worlds
 
+![demo](https://raw.githubusercontent.com/advancedresearch/mix_economy/master/images/gini-solver-020.png)
+
+*The black curve without a Gini solver, the red curve is with a Gini solver set to target 0.2*
+
+To run the demo, fork the repository and type `cargo run --example demo`.
+
 ### Blog posts
 
 - [2017-10-11 Is it time to think differently about money?](https://github.com/advancedresearch/advancedresearch.github.io/blob/master/blog/2017-10-10-is-it-time-to-think-differently-about-money.md)
