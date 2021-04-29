@@ -4,6 +4,7 @@ version = "0.2.0"
 authors = ["bvssvni <bvssvni@gmail.com>"]
 description = "A research project to mix-regulate economy in MMO worlds"
 license = "MIT OR Apache-2.0"
+exclude = ["images/*"]
 
 [dev-dependencies]
 piston_window = "0.120.0"
