@@ -25,7 +25,7 @@ substantial resources to do.
 This research project studies a simple model that can be mixed with
 an existing economy model:
 
-1. A normalized thresold sets a soft limit of the wealth of a player.
+1. A normalized threshold sets a soft limit of the wealth of a player.
 2. Money "burns in the pockets" of rich players, encouraging spending.
 3. Controlled inflation charged by "total lack of money".
 4. Rewards weighted as negative tax on fortune (more money = more rewards).
